@@ -1,0 +1,5 @@
+package.json:
+  - moved vite and a couple other frontend devDependencies to dependencies
+ensured to connect with right Redis URL in production:
+  - backend/.../utils/redis.js
+  - backend/.../jobs/queue.js
