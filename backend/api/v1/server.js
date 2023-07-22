@@ -108,8 +108,10 @@ app.use(express.urlencoded({ extended: true }));
 // setup logger
 app.use(logger('dev'));
 
+// setup CORS
+// const origin = process.env.NODE_ENV === 'production' ? `${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}` : 'localhost:3000';
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: `http://localhost:3000`,
   credentials: true,
   exposedHeaders: ['Set-Cookie'],
 }));
@@ -127,12 +129,13 @@ app.use(function (err, req, res, next) {
 });
 
 // establish connections
+// const HOST = process.env.NODE_ENV === 'production' ? '::' : '0.0.0.0';
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+    app.listen(PORT, '0.0.0.0', () => console.log(`Listening on port ${PORT}`));
   })
   .catch((err) => console.log(err.message));

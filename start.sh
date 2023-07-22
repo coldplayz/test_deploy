@@ -5,19 +5,18 @@
 # TODO: log rotation
 if [[ ! $(pgrep -f jobs/processJobs) ]]
 then
-  node ./backend/api/v1/jobs/processJobs.js > queue.log &
+  node ./backend/api/v1/jobs/processJobs.js &
 fi
 
 if [[ ! $(pgrep -f server.js) ]]
 then
-  node ./backend/api/v1/server.js > server.log &
+  node ./backend/api/v1/server.js &
 fi
+
+sleep 4
 
 # Run frontend app
 if [[ ! $(pgrep -f vite) ]]
 then
-  npm run f-dev > frontend.log &
+  npm run f-dev
 fi
-
-# Wait for back- and front-ends to start
-sleep 8  # too much?
