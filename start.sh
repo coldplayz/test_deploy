@@ -18,5 +18,6 @@ sleep 4
 # Run frontend app
 if [[ ! $(pgrep -f vite) ]]
 then
-  vite --port 3000 --logLevel info --debug true Latent-FrontEnd/
+  # vite --port 3000 --logLevel info --debug true Latent-FrontEnd/
+  vite preview --port 3000 --logLevel info --debug true Latent-FrontEnd/
 fi
