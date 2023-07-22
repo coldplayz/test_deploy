@@ -13,7 +13,7 @@ const session = require('express-session');
 const allRoutes = require('./routes/index');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.BACKEND_PORT || 5000;
 let MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost/latent';
 if (process.env.ENVIRON === 'test') {
   MONGO_URI = 'mongodb://localhost/testdb';
